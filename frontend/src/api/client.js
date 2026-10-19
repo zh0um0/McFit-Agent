@@ -1,7 +1,11 @@
 /**
  * 统一 API 客户端。
  * 关键点：401 自动刷新 token 并重放原请求；刷新也失败才登出。
+ * Demo 模式（VITE_DEMO=1 构建）：所有请求导流到本地 demo 路由器，零后端运行。
  */
+import { demoRequest } from '../demo'
+
+const DEMO = import.meta.env.VITE_DEMO === '1'
 const BASE = import.meta.env.VITE_API_BASE || ''
 
 let accessToken = localStorage.getItem('mcfit_access') || ''
@@ -53,6 +57,9 @@ async function doRefresh() {
 }
 
 async function request(path, { method = 'GET', body, retry = true } = {}) {
+  if (DEMO) {
+    return demoRequest(path, { method, body })
+  }
   const headers = { 'Content-Type': 'application/json' }
   if (accessToken) headers.Authorization = `Bearer ${accessToken}`
 
