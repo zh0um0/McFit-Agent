@@ -1,0 +1,37 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ---- 密钥与本地数据（严禁入库）----
+.env
+.local_key
+*.db
+*.db-journal
+mcp-config.json
+
+# ---- 前端 ----
+node_modules/
+dist/
+.vite/
+*.local
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- 演示产物 ----
+*.log
+tmp/
+
+# ---- 工具临时目录 ----
+.playwright-cli/
+_clone_test/
+e2e/artifacts/
+e2e/screenshots/

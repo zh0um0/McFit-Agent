@@ -1,0 +1,14 @@
+{
+  "name": "mcfit-agent-e2e",
+  "private": true,
+  "version": "0.1.0",
+  "description": "McFit-Agent 端到端验收脚本依赖（仅开发用，主程序运行不需要）",
+  "type": "module",
+  "scripts": {
+    "test:e2e": "node e2e/journey.spec.mjs",
+    "test:acceptance": "node e2e/user-acceptance.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

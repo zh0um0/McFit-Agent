@@ -1,0 +1,25 @@
+# ---- Web 框架 ----
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+# ---- 数据库 ----
+SQLAlchemy==2.0.36
+alembic==1.14.0
+# 默认 SQLite 零配置；切 Postgres 只需改 DATABASE_URL 并装 psycopg[binary]
+psycopg[binary]==3.2.3
+
+# ---- 认证与安全 ----
+PyJWT==2.10.1
+argon2-cffi==23.1.0
+cryptography==44.0.0          # 敏感字段（体重等）落库加密
+pydantic==2.10.4
+pydantic-settings==2.7.0
+email-validator==2.2.0          # Pydantic EmailStr 的硬依赖，漏装会启动即崩
+
+# ---- MCP 客户端（Streamable HTTP / JSON-RPC）----
+httpx==0.28.1
+
+# ---- 测试 ----
+pytest==8.3.4
+pytest-asyncio==0.25.0
