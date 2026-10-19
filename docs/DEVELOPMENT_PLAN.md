@@ -461,3 +461,35 @@ exercise_presets  （全局运动参数，独立于用户）
 2. LLM ReAct Agent 完整版（需 API Key）
 3. Alembic 正式迁移脚本版本化
 4. Playwright 端到端录屏脚本
+---
+
+## 六·四、在线演示版（GitHub Pages）+ README 首屏重做（2026-10-19）
+
+> 动因：竞品调研（McArena / McDualBudget Coach）显示"路人 30 秒内点开即玩"是 Star 转化的决定性因素。
+
+### 交付内容
+
+| 项 | 说明 |
+| :--- | :--- |
+| 前端 Demo 模式 | `VITE_DEMO=1` 构建开关：`client.js` 将全部请求导流到 `frontend/src/demo/` 本地路由器——算法层（TDEE/运动换算/凑单比价）从 Python 移植到 JS（同公式口径），数据存 localStorage，注册/登录为演示访客直通 |
+| Pages 部署 | `.github/workflows/deploy-pages.yml`：push main 自动 `vite build --base=/-McFit-Agent/` 并部署；**需在仓库 Settings → Pages → Source 选 GitHub Actions** |
+| README 首屏 | 在线试玩入口 + Star 拉票句 + 5 图截图矩阵（`docs/screenshots/`）+ 实测凑单数据 + badge 行 |
+| E2E | `e2e/demo-smoke.mjs` 10 项（demo 构建冒烟）+ `e2e/capture-readme-shots.mjs`（README 素材截图） |
+
+### 踩坑记录
+
+| 坑 | 现象 | 解法 |
+| :--- | :--- | :--- |
+| MSYS 路径转换 | Git Bash 把 `--base=/-McFit-Agent/` 改写成 Git 安装路径，产物引用错误 | `MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*"` |
+| mock 契约盲区 | CheckinView 读 `stats.done_ratio` / `calendar.summary.done` 崩溃——端点采样时只抓了部分端点 | 以后做 mock 层先 grep 前端全部字段消费点（本次靠浏览器报错回补） |
+| demo 响应字段 | `/orders/today-summary` 需含 `has_profile` / `daily_target` / `protein_target` | 按后端实测响应逐字段对齐 |
+
+### 验证
+
+demo 构建冒烟 **10/10 通过**（注册→建档→菜单→凑单→保存→打卡→贴纸→日历→刷新持久化→控制台健康）。
+
+### 待用户操作
+
+1. 本地已 commit（`feat: 在线演示版…`），需手动 `git push origin main`（沙箱网络无法直连 GitHub）
+2. GitHub 仓库 Settings → Pages → Source 切换为 **GitHub Actions**（首次部署必须手动切换一次）
+3. 部署完成后核对 `https://zh0um0.github.io/-McFit-Agent/` 可访问
