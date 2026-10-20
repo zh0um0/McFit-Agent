@@ -492,4 +492,4 @@ demo 构建冒烟 **10/10 通过**（注册→建档→菜单→凑单→保存�
 
 1. 本地已 commit（`feat: 在线演示版…`），需手动 `git push origin main`（沙箱网络无法直连 GitHub）
 2. GitHub 仓库 Settings → Pages → Source 切换为 **GitHub Actions**（首次部署必须手动切换一次）
-3. 部署完成后核对 `https://zh0um0.github.io/-McFit-Agent/` 可访问
+3. 部署完成后核对 `https://zh0um0.github.io/McFit-Agent/` 可访问

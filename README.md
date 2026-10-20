@@ -14,7 +14,7 @@
 
 ## ▶ 在线试玩（点开就用，不用装任何东西）
 
-### 👉 [点我进在线演示版](https://zh0um0.github.io/-McFit-Agent/) →
+### 👉 [点我进在线演示版](https://zh0um0.github.io/McFit-Agent/) →
 
 无需注册真实账号、无需 MCP Token、数据只存你自己的浏览器本地。填一个身材档案，30 秒看到你的专属热量预算。
 

@@ -28,7 +28,7 @@ jobs:
           VITE_DEMO: '1'
         run: |
           npm ci
-          npx vite build --base=/-McFit-Agent/
+          npx vite build --base=/McFit-Agent/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
