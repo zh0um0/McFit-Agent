@@ -54,34 +54,6 @@
 
 **⚠️ 免责声明：本项目所有营养与运动换算数据均为估算值，仅供参考，不构成医疗或营养专业建议。**
 
----
-
-## 🚀 快速上手（完整版）
-
-```bash
-# 1. 后端
-cd backend
-python -m venv .venv && .venv\Scripts\activate      # Windows
-# source .venv/bin/activate                           # macOS / Linux
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-
-# 2. 前端（新开一个终端）
-cd frontend
-npm install && npm run dev
-```
-
-打开 **http://localhost:5173**，用演示账号登录：
-
-| 用户名 | 密码 |
-| :--- | :--- |
-| `demo` | `demo123456` |
-
-或者直接双击 **`start.bat`**（Windows）/ `./start.sh`（macOS / Linux）。
-
-**不需要配置任何 LLM Key，也不需要 MCP Token** —— 内置种子菜单即可跑通全部主流程；配置 MCP Token 后自动切换官方实时数据。
-
----
 
 ## 🛠 技术架构
 
