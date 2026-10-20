@@ -34,4 +34,4 @@ tmp/
 .playwright-cli/
 _clone_test/
 e2e/artifacts/
-e2e/screenshots/
+e2e/screenshots/docs/gif-frames/
