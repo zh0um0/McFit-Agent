@@ -6,6 +6,7 @@
 import { demoRequest } from '../demo'
 
 const DEMO = import.meta.env.VITE_DEMO === '1'
+export const IS_DEMO = DEMO
 const BASE = import.meta.env.VITE_API_BASE || ''
 
 let accessToken = localStorage.getItem('mcfit_access') || ''

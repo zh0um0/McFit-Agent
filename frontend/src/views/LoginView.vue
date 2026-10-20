@@ -2,13 +2,14 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
-import { api } from '../api/client'
+import { api, IS_DEMO } from '../api/client'
 
 const auth = useAuthStore()
 const router = useRouter()
 
 const mode = ref('login')          // login | register
-const form = reactive({ username: '', password: '', email: '' })
+// 演示模式预填演示账号，访客点一下「登录」即可进入
+const form = reactive({ username: IS_DEMO ? 'demo' : '', password: IS_DEMO ? 'demo123456' : '', email: '' })
 const health = ref(null)
 
 api.health().then((h) => (health.value = h)).catch(() => (health.value = null))
@@ -80,8 +81,8 @@ async function submit() {
         <code>uvicorn app.main:app --reload --port 8000</code>
       </div>
 
-      <div class="disclaimer">
-        演示账号：<b>demo</b> / <b>demo123456</b><br />
+      <div v-if="IS_DEMO" class="disclaimer">
+        已为你填好演示账号（<b>demo</b> / <b>demo123456</b>），直接点「登录」即可体验。<br />
         本产品输出的营养与运动数据均为<b>估算值</b>，仅供参考，不构成医疗或营养专业建议。
       </div>
     </div>

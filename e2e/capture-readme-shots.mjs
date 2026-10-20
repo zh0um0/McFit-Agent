@@ -3,7 +3,7 @@
  */
 import { chromium } from 'file:///C:/Users/zhoumh/.workbuddy/binaries/node/workspace/node_modules/playwright-core/index.mjs';
 
-const B = 'http://127.0.0.1:8899/-McFit-Agent/';
+const B = 'http://127.0.0.1:8899/McFit-Agent/';
 const OUT = '../docs/screenshots';
 
 const browser = await chromium.launch();
