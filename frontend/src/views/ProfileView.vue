@@ -2,6 +2,7 @@
 import { computed, reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
+import { api } from '../api/client'
 
 const auth = useAuthStore()
 const route = useRoute()
@@ -21,8 +22,11 @@ const form = reactive({
 })
 
 async function loadOptions() {
-  const r = await fetch('/api/v1/profile/options')
-  if (r.ok) opts.value = await r.json()
+  try {
+    // 必须走 api 客户端：demo 模式下请求被导流到本地拦截器；
+    // 此前用裸 fetch 在 GitHub Pages 上 404，导致下拉框无选项
+    opts.value = await api.get('/api/v1/profile/options')
+  } catch { /* 保留空默认值 */ }
 }
 loadOptions()
 
